@@ -14,8 +14,8 @@ ENV JENKINS_HOME /var/lib/jenkins
 
 EXPOSE 8080
 
-RUN mkdir -p /var/lib/jenkins
-RUN chown -R jenkins /var/lib/jenkins
+RUN mkdir -p /var/lib/jenkins/plugins
+RUN chmod -R 770 /var/lib/jenkins
 
 VOLUME ["/var/lib/jenkins"]
 
