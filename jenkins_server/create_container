@@ -1,1 +1,1 @@
-sudo docker run --name jenkins -d -p 8080:8080 bewilcox/jenkins
+sudo docker run --name jenkins -d -p 8080:8080 -v /home/vagrant/jenkins:/home/jenkins:rw bewilcox/jenkins

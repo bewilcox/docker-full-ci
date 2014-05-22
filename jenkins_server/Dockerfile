@@ -12,20 +12,18 @@ RUN apt-get install -y jenkins
 
 ENV JENKINS_HOME /var/lib/jenkins
 
-EXPOSE 8080
-
 RUN mkdir -p /var/lib/jenkins/plugins
 RUN chmod -R 770 /var/lib/jenkins
 
 VOLUME ["/var/lib/jenkins"]
 
-ADD startup_jenkins.sh /startup_jenkins.sh
-RUN chmod 700 /startup_jenkins.sh
+RUN mkdir /home/jenkins
+ENV JENKINS_HOME /home/jenkins
 
-# Copy SSH Key
-ADD docker.pub /root/.ssh/id_rsa.pub
-ADD docker /root/.ssh/id_rsa
-RUN chmod 600 /root/.ssh/id_rsa /root/.ssh/id_rsa.pub
-ADD ssh-config /etc/ssh/ssh_config
+ADD startup_server.sh /startup_server.sh
+RUN chmod 700 /startup_server.sh
 
-CMD ["/startup_jenkins.sh"]
+# Port
+EXPOSE 8080
+
+CMD ["/startup_server.sh"]
