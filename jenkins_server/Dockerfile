@@ -1,4 +1,4 @@
-FROM julienvey/fullubuntu
+FROM ubuntu:13.10
 
 # Install packages needed
 RUN apt-get update
