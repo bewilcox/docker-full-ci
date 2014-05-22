@@ -12,6 +12,7 @@ DATA=/var/lib/jenkins
 if find $DATA/plugins -maxdepth 0 -empty | read v; then
 
     (cd $DATA/plugins && wget --no-check-certificate $PLUGINS_ENDPOINT/token-macro.hpi)
+    (cd $DATA/plugins && wget --no-check-certificate $PLUGINS_ENDPOINT/jquery-ui.hpi)
     (cd $DATA/plugins && wget --no-check-certificate $PLUGINS_ENDPOINT/jquery.hpi)
     (cd $DATA/plugins && wget --no-check-certificate $PLUGINS_ENDPOINT/parameterized-trigger.hpi)
     (cd $DATA/plugins && wget --no-check-certificate $PLUGINS_ENDPOINT/scm-api.hpi)
