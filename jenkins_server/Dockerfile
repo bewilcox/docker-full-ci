@@ -22,4 +22,10 @@ VOLUME ["/var/lib/jenkins"]
 ADD startup_jenkins.sh /startup_jenkins.sh
 RUN chmod 700 /startup_jenkins.sh
 
+# Copy SSH Key
+ADD docker.pub /root/.ssh/id_rsa.pub
+ADD docker /root/.ssh/id_rsa
+RUN chmod 600 /root/.ssh/id_rsa /root/.ssh/id_rsa.pub
+ADD ssh-config /etc/ssh/ssh_config
+
 CMD ["/startup_jenkins.sh"]
