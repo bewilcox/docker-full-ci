@@ -2,16 +2,15 @@ FROM ubuntu:13.10
 
 # Install packages needed
 RUN apt-get update
-RUN apt-get install -y git curl maven wget
+RUN apt-get install -y git curl maven wget software-properties-common
 
-# Add oracle java 7 repository
-RUN apt-get -y install software-properties-common
-RUN add-apt-repository ppa:webupd8team/java
-RUN apt-get -y update
-# Accept the Oracle Java license
-RUN echo "oracle-java7-installer shared/accepted-oracle-license-v1-1 boolean true" | debconf-set-selections
-# Install Oracle Java
-RUN apt-get -y install oracle-java7-installer
+# Install Java.
+RUN \
+  echo debconf shared/accepted-oracle-license-v1-1 select true | debconf-set-selections && \
+  echo debconf shared/accepted-oracle-license-v1-1 seen true | debconf-set-selections && \
+  add-apt-repository -y ppa:webupd8team/java && \
+  apt-get update && \
+  apt-get install -y oracle-java7-installer
 
 # Install Jenkins
 RUN wget -q -O - http://pkg.jenkins-ci.org/debian/jenkins-ci.org.key | apt-key add -
