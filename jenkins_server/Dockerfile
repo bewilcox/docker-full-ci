@@ -10,15 +10,12 @@ RUN sh -c 'echo deb http://pkg.jenkins-ci.org/debian binary/ > /etc/apt/sources.
 RUN apt-get update
 RUN apt-get install -y jenkins
 
-ENV JENKINS_HOME /var/lib/jenkins
-
 RUN mkdir -p /var/lib/jenkins/plugins
 RUN chmod -R 770 /var/lib/jenkins
 
-VOLUME ["/var/lib/jenkins"]
+ENV JENKINS_HOME /var/lib/jenkins
 
-RUN mkdir /home/jenkins
-ENV JENKINS_HOME /home/jenkins
+VOLUME ["/var/lib/jenkins"]
 
 ADD startup_server.sh /startup_server.sh
 RUN chmod 700 /startup_server.sh

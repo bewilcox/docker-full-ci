@@ -2,7 +2,8 @@
 
 ## see also https://updates.jenkins-ci.org/download/plugins/ for hpi files
 PLUGINS_ENDPOINT=http://updates.jenkins-ci.org/latest
-DATA=/var/lib/jenkins
+#DATA=/var/lib/jenkins
+DATA=$JENKINS_HOME
 
 #mkdir -p $DATA/plugins
 
