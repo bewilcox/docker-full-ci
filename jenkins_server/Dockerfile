@@ -21,7 +21,10 @@ RUN apt-get install -y jenkins
 RUN mkdir -p /var/lib/jenkins/plugins
 RUN chmod -R 770 /var/lib/jenkins
 
+# Environment variable
 ENV JENKINS_HOME /var/lib/jenkins
+ENV JAVA_HOME /usr/lib/jvm/java-7-oracle
+ENV MAVEN_HOME /usr/share/maven
 
 VOLUME ["/var/lib/jenkins"]
 
